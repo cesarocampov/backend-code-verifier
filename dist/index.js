@@ -12,13 +12,24 @@ const port = process.env.PORT || 8000;
  * define first route
  */
 app.get('/', (req, res) => {
-    //send hello world
-    res.send('APP Express +nodemon +TS + Swagger');
-});
-app.get('/hello', (req, res) => {
-    //send hello world
+    // send hello world
     res.send('Hello World');
 });
-//Execute APp
+app.get('/hello', (req, res) => {
+    // send hello world
+    const params = req.query;
+    console.log(params);
+    if (params.name) {
+        res.send(`Hola ${params.name}`);
+    }
+    else {
+        res.send('Hola anonimo');
+    }
+});
+app.get('/goodbye', (req, res) => {
+    // send hello world
+    res.send('Goodbye, World');
+});
+// Execute APp
 app.listen(port, () => console.log(`Express Server Running at http://localhost:${8000}`));
 //# sourceMappingURL=index.js.map

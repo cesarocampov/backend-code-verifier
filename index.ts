@@ -11,12 +11,23 @@ const port: string | number = process.env.PORT || 8000
  */
 app.get('/', (req:Request, res:Response) => {
   // send hello world
-  res.send('APP Express +nodemon +TS + Swagger')
+  res.send('Hello World')
 })
 
 app.get('/hello', (req:Request, res:Response) => {
   // send hello world
-  res.send('Hello World ')
+  const params = req.query
+  console.log(params)
+  if (params.name) {
+    res.send(`Hola ${params.name}`)
+  } else {
+    res.send('Hola anonimo')
+  }
+})
+
+app.get('/goodbye', (req:Request, res:Response) => {
+  // send hello world
+  res.send('Goodbye, World')
 })
 
 // Execute APp
